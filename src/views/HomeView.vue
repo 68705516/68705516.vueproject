@@ -13,11 +13,11 @@
                     grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a href="Product.html" class="btn btn-primary btn-lg px-4 gap-3">
+                        <a href="#" class="btn btn-primary btn-lg px-4 gap-3">
                             All Product
                         </a>
 
-                        <a href="contact.html" class="btn btn-outline-secondary btn-lg px-4">
+                        <a href="/contract" class="btn btn-outline-secondary btn-lg px-4">
                             Contact
                         </a>
                     </div>

@@ -8,8 +8,8 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/About',
+    name: 'About',
 
     component: () => import( '../views/AboutView.vue')
   },
@@ -19,6 +19,49 @@ const routes = [
     name: 'Contract',
 
     component: () => import( '../views/Contract.vue')
+  },
+
+  {
+    path: '/Product_api',
+    name: 'Product_api',
+
+    component: () => import( '../views/Product_api.vue')
+  },
+
+    {
+    path: '/Product_list',
+    name: 'Product_list',
+
+    component: () => import( '../views/Product_list.vue')
+  },
+
+      {
+    path: '/glod',
+    name: 'glod',
+
+    component: () => import( '../views/Glod.vue')
+  },
+
+  {
+    path: '/Show customer',
+    name: 'Customer',
+
+    component: () => import( '../views/Show customer.vue')
+  },
+
+  {
+    path: '/Show employees',
+    name: 'Employees',
+
+    component: () => import( '../views/Show customer.vue')
+  },
+
+  
+  {
+    path: '/register',
+    name: 'Register',
+
+    component: () => import( '../views/Register.vue')
   }
 ]
 
