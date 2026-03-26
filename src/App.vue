@@ -1,105 +1,115 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom" data-bs-theme="light">
-    <div class="container">
-      <router-link to="/" class="navbar-brand fw-bold">
-        <i class="bi bi-shop"></i> Shop DD
-      </router-link>
-      
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom" data-bs-theme="light">
+      <div class="container">
+        <router-link to="/" class="navbar-brand fw-bold">
+          <i class="bi bi-shop"></i> Shop DD
+        </router-link>
+        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link" active-class="active">
-              Home
-            </router-link>
-          </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link" active-class="active">
+                Home
+              </router-link>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/Product_api" class="nav-link">
-              Product
-            </router-link>
-          </li>
+            <li class="nav-item">
+              <router-link to="/product-api" class="nav-link">
+                Product
+              </router-link>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/Show customer" class="nav-link">
-              Customer
-            </router-link>
-          </li>
+            <li class="nav-item">
+              <router-link to="/Show customer" class="nav-link">
+                Customer
+              </router-link>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/Show employees" class="nav-link">
-              Employees
-            </router-link>
-          </li>
+            <li class="nav-item">
+              <router-link to="/Show employees" class="nav-link">
+                Employees
+              </router-link>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/Product_list" class="nav-link">
-              Product List
-            </router-link>
-          </li>
+            <li class="nav-item">
+              <router-link to="/Product_list" class="nav-link">
+                Product List
+              </router-link>
+            </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              Auth
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <router-link to="/register" class="dropdown-item">Register</router-link>
-              </li>
-              <li>
-                <router-link to="/login" class="dropdown-item">Login</router-link>
-              </li>
-            </ul>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                LogIn
+              </a>
+              <ul class="dropdown-menu">
+                <li v-if="!isLoggedIn">
+                  <router-link to="/Add employees" class="dropdown-item">Register</router-link>
+                </li>
+                <li v-if="!isLoggedIn">
+                  <router-link to="/Login" class="dropdown-item">Login</router-link>
+                </li>
+                <li v-if="isLoggedIn">
+                  <router-link to="/Logout" class="dropdown-item">Logout</router-link>
+                </li>
+              </ul>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/AboutView" class="nav-link">
-              About
-            </router-link>
-          </li>
+            <li class="nav-item">
+              <router-link to="/About" class="nav-link">
+                About
+              </router-link>
+            </li>
 
-          <li class="nav-item">
-            <router-link to="/Contract" class="nav-link">
-              Contact
-            </router-link>
-          </li>
-        </ul>
+            <li class="nav-item">
+              <router-link to="/Contract" class="nav-link">
+                Contact
+              </router-link>
+            </li>
+          </ul>
 
-        <form class="d-flex" role="search">
-          <input
-            v-model="searchQuery"
-            class="form-control me-2"
-            type="search"
-            placeholder="Search products..."
-            @keyup.enter="handleSearch"
-          />
-          <button class="btn btn-outline-light" type="button" @click="handleSearch">
-            Search
-          </button>
-        </form>
+          <form class="d-flex" role="search">
+            <input
+              v-model="searchQuery"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search products..."
+              @keyup.enter="handleSearch"
+            />
+            <button class="btn btn-outline-light" type="button" @click="handleSearch">
+              Search
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="main-content">
-    <router-view />
+    <div class="main-content">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 const router = useRouter()
+const store = useStore()
 const searchQuery = ref('')
+
+const isLoggedIn = computed(() => store.getters.isLoggedIn)
+const user = computed(() => store.state.user)
 
 const handleSearch = () => {
   if (searchQuery.value.trim()) {
@@ -212,22 +222,4 @@ const handleSearch = () => {
     margin: 5px 0;
   }
 }
-<style>
-
-/* สีของเมนูที่กำลังใช้งานอยู่ (Active) */
-.router-link-active {
-  color: #fff !important;
-  font-weight: bold;
-  border-bottom: 2px solid white;
-}
-
-.text-orange {
-  color: #f07a4b;
-  font-weight: bold;
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-}
-  </style>
+</style>

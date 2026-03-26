@@ -8,60 +8,59 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/About',
+    path: '/about',
     name: 'About',
-
-    component: () => import( '../views/AboutView.vue')
+    component: () => import('../views/About.vue')
   },
-
- {
-    path: '/Contract',
+  {
+    path: '/contract',
     name: 'Contract',
-
-    component: () => import( '../views/Contract.vue')
+    component: () => import('../views/Contract.vue')
   },
-
   {
     path: '/Product_api',
-    name: 'Product_api',
-
-    component: () => import( '../views/Product_api.vue')
+    name: 'Product',
+    component: () => import('../views/Product_api.vue')
   },
-
-    {
+  {
     path: '/Product_list',
-    name: 'Product_list',
-
-    component: () => import( '../views/Product_list.vue')
+    name: 'ProductList',
+    component: () => import('../views/Product_list.vue')
   },
-
-      {
-    path: '/glod',
-    name: 'glod',
-
-    component: () => import( '../views/Glod.vue')
-  },
-
   {
-    path: '/Show customer',
-    name: 'Customer',
-
-    component: () => import( '../views/Show customer.vue')
+    path: '/Gold',
+    name: 'Gold',
+    component: () => import('../views/Glod.vue')
   },
-
   {
-    path: '/Show employees',
+    path: '/customers',
+    name: 'Customers',
+    component: () => import('../views/Show customer.vue')
+  },
+  {
+    path: '/employees',
     name: 'Employees',
-
-    component: () => import( '../views/Show customer.vue')
+    component: () => import('../views/Show employees.vue')
   },
-
-  
+  {
+    path: '/add-employee',
+    name: 'AddEmployee',
+    component: () => import('../views/Add employees.vue')
+  },
   {
     path: '/register',
     name: 'Register',
-
-    component: () => import( '../views/Register.vue')
+    component: () => import('../views/Register.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: () => import('../views/Logout.vue')
   }
 ]
 

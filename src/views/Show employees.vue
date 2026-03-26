@@ -9,20 +9,20 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
+          <th>Full Name</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Active</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="employee in employees" :key="employee.id">
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.name }}</td>
-          <td>{{ employee.email }}</td>
-          <td>{{ employee.phone }}</td>
-          <td>{{ employee.address }}</td>
+        <tr v-for="employee in employees" :key="employee.emp_id">
+          <td>{{ employee.emp_id }}</td>
+          <td>{{ employee.full_name }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.active ? 'Yes' : 'No' }}</td>
         </tr>
       </tbody>
     </table>
@@ -39,7 +39,7 @@ const error = ref('')
 onMounted(async () => {
   loading.value = true
   try {
-    const res = await fetch('http://localhost/68705516.vueproject/php.api/show_customer.php')
+    const res = await fetch('http://localhost/68705516.vueproject/php.api/show_employees.php')
     const data = await res.json()
     
     if (data.error) {
